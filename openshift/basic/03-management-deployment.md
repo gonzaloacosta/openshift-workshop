@@ -34,3 +34,19 @@ $ exit
 oc delete all -l app=dc-metro-map
 oc delete secrets dc-metro-map-generic-webhook-secret dc-metro-map-github-webhook-secret    
 
+# Aumentar las replicas
+oc scale --replicas=4 deployment/dc-metro-map 
+
+# Verifico pods y tomo nota de un nombre
+oc get pods 
+
+# Eliminino un pod
+oc delete pod [pod name]
+
+# Verifico como se recuperan las replicas 
+oc get pods
+
+# Verifico el estado deseado en deployment 
+oc describe deploymentconfig/dc-metro-map
+
+

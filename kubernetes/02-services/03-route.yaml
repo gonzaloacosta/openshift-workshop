@@ -2,15 +2,15 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: myapp
-  name: myapp
+    app: hello
+  name: hello
   namespace: workshop
 spec:
-  host: myapp-workshop.apps.ocp4.labs.semperti.local
+  host: hello-workshop.apps.ocp4.labs.semperti.local
   port:
     targetPort: http
   to:
     kind: Service
-    name: myapp
+    name: hello
     weight: 100
   wildcardPolicy: None

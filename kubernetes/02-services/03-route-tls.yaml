@@ -2,17 +2,17 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: myapp
-  name: myapp-tls
+    app: hello
+  name: hello-tls
   namespace: workshop
 spec:
-  host: myapp-tls-workshop.apps.ocp4.labs.semperti.local
+  host: hello-tls-workshop.apps.ocp4.labs.semperti.local
   port:
     targetPort: http
   tls:
     termination: edge
   to:
     kind: Service
-    name: myapp
+    name: hello
     weight: 100
   wildcardPolicy: None

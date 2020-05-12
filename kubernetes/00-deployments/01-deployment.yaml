@@ -22,7 +22,3 @@ spec:
         imagePullPolicy: IfNotPresent   
         ports:
         - containerPort: 8080
-
-
-
-        
