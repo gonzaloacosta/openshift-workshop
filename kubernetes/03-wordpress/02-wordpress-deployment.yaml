@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    role: wordpress
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: wordpress
+      tier: web
+  template:
+    metadata:
+      labels:
+        role: wordpress
+        tier: web
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:php7.1-apache
+        imagePullPolicy: IfNotPresent   
+        ports:
+        - containerPort: 80
+#        env:
+#        - name: MYSQL_ROOT_PASSWORD
+#          value: "password"
+#        resources:
+#          requests:
+#            memory: "64Mi"
+#            cpu: "200m"
+#          limits:
+#            memory: "128Mi"
+#            cpu: "500m"
