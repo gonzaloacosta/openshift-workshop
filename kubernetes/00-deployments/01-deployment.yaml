@@ -5,7 +5,7 @@ metadata:
   labels:
     role: hello
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       role: hello
@@ -17,8 +17,8 @@ spec:
         tier: web
     spec:
       containers:
-      - name: hello-app
+      - name: hello
         image: gcr.io/google-samples/hello-app:1.0
-        imagePullPolicy: IfNotPresent   
         ports:
         - containerPort: 8080
+

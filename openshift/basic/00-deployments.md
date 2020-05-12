@@ -6,7 +6,7 @@ oc new-project workshop --display-name "Workshop Arquitectura"
 # En caso de deploy en ITAU.
 
 # Deploy de un blog de ejemplo.
- oc new-app openshiftkatacoda/blog-django-py --name blog 
+oc new-app openshiftkatacoda/blog-django-py --name blog 
 
 # Exponemos servicio
 oc expose service/blog
@@ -33,6 +33,9 @@ oc set env dc/blog --list
 oc delete all --selector app=blog 
 
 ### Distintos tipos de deployments 
+
+# Creamos el proyecto para test de deployments
+oc new-project workshop-deployment --display-name "Workshop Arquitectura Test Deployments"
 
 # Despliegue desde una imagen
 oc new-app openshiftkatacoda/blog-django-py --name blog-from-image
