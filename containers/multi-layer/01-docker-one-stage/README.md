@@ -1,11 +1,16 @@
-# Docker Build
+Docker Build
+```
 sudo docker build -t node-vanilla .
-
-# Docker Run
+```
+Docker Run
+```
 sudo docker run -p 3000:3000 -ti --rm --init node-vanilla
-
-# Buildah Build
+```
+Buildah Build
+```
 sudo buildah bud -t node-vanilla .
-
-# Podman Run
+```
+Podman Run
+```
 sudo podman run -p 3000:3000 -ti --rm --init node-vanilla
+```
