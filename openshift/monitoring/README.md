@@ -27,6 +27,9 @@ Accedemos a la UI
 curl https://<prometheus route>/
 ```
 
+Para el scrap de metricas de una aplicacion en targets especificamos la url y por defecto busca el path /metrics
+
+```
 cat < EOF > prometheus-configmaps.yaml
 apiVersion: template.openshift.io/v1
 kind: Template
@@ -53,7 +56,6 @@ objects:
                   group: 'pad' 
 EOF
 ```
-Scrap de aplicacion custom, por defecto busca /metrics.
 
 Para poder agregar la configuracion de los targets agregamos un configmaps al deploy de prometheus quien levanta la configuracion.
 ```
@@ -71,7 +73,6 @@ curl https://<prometheus route>/targets
 ```
 
 ## Grafana
-
 Hacemos el deploy de grafana
 ```
 oc new-app grafana/grafana:6.6.1 -n monitoring
