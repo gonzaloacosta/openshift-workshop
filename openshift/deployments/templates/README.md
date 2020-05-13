@@ -14,3 +14,13 @@ Es ejecutado en el proyecto openshift porque en ahi donde alojamos de manera cen
 oc create -f template.yaml -n <project_name>
 ```
 
+Podemos ejecutar el template desde la UI buscando la opcion por el catalogo y desde la linea de comandos de la siguiente manera.
+```
+oc process -f ~/template.yaml | oc apply -f -
+```
+NOTA: Debo especificar los parametros.
+
+En caso de querer hacer un rollout del deployment realizo lo siguiente.
+```
+oc rollout latest dc/blog -n workshop
+```

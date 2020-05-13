@@ -13,5 +13,5 @@ Ejercicios practicos para administrar recursos en un cluster de Openshift
 2. Networking.
 3. Network Policies.
 4. Labels, Annotation y NodeSelectors.
-5. Monitoring
+5. [Monitoring](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/monitoring).
 6. Logging

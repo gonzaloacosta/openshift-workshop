@@ -1,0 +1,62 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  annotations:
+  namespace: metrics-demo
+  labels:
+    app: metrics-demo-app
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - metrics-demo-app
+        from:
+          kind: ImageStreamTag
+          namespace: metrics-demo
+          name: 'metrics-demo-app:workshop'
+        lastTriggeredImage: >-
+          quay.io/4n4nd/metrics-demo-app@sha256:221df89ec63230e2560ff05ecb42cb2e100bd5021488ecbb5b7186d07d65f171
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: metrics-demo-app
+    deploymentconfig: metrics-demo-app
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: metrics-demo-app
+        deploymentconfig: metrics-demo-app
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+    spec:
+      containers:
+        - name: metrics-demo-app
+          image: >-
+            quay.io/4n4nd/metrics-demo-app@sha256:221df89ec63230e2560ff05ecb42cb2e100bd5021488ecbb5b7186d07d65f171
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler

@@ -15,9 +15,7 @@ yum -y install buildah skopeo podman
 ```
 Pull de imagenes
 ```
-podman pull registry.access.redhat.com/rhel7
-```
-Inspeccionar imagen
+ionar imagen
 ```
 skopeo inspect docker://registry.access.redhat.com/rhel7
 ```
