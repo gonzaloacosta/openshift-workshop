@@ -1,13 +1,15 @@
-# Como crear una registry local
+### Docker Registry 
+Como crear una registry local
 
 1. Instalamos paquetes
+```
 yum -y install docker-distribution
-
+```
 2. Habilitamos servicio
+```
 systemct enable docker-distribution
-
+```
 3. Habilitamos https
-
 Creamos los certificados
 ```
 mkdir /etc/docker-distribution/certs
@@ -41,16 +43,22 @@ http:
 ```
 
 3. Levantamos servicios
+```
 systemctl start docker-distribution
-
+```
 4. Verificamos imagenes
+```
 podman images
-
+```
 5. Realizamos un pull de una imagen local a la registry local
+```
 buildah push fedora_postgresql:latest localhost:5000/fedora_postgresql:latest
-
+```
 6. Realizamos el pull de la imagen pero con skopeo
+```
 skopeo copy containers-storage:7a840db7f020 docker://localhost:5000/fedora_postgresql:latest
-
+```
 7. Search de la imagen con podman 
+```
 podman search localhost:5000/postgresl
+```
