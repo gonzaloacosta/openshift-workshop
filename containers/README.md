@@ -13,8 +13,12 @@ Instalar containers tools
 ```
 yum -y install buildah skopeo podman
 ```
+
 Pull de imagenes
 ```
+podman pull docker://registry.access.redhat.com/rhel7
+```
+
 ionar imagen
 ```
 skopeo inspect docker://registry.access.redhat.com/rhel7
