@@ -24,7 +24,7 @@ Repositorio con ejercicios practicos para la administracion de aplicaciones basa
 
 *Es un sistema opens-source para automazar el despliegue (deploy), escalado (scale) y adminsitracion (management) de aplicaciones basadas en contenedores.*
 
-![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/kubernetes.png)
+![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/kubernetes-cluster.png)
 
 **Links de referencia**
 - [Container Orchestration](https://en.wikipedia.org/wiki/Container_orchestration)
