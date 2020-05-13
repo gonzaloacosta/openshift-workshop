@@ -1,8 +1,8 @@
 ## Openshift Workshop ##
 
-En el repositorio encontraremos ejercicios practicos en el cuadro de workshop de openshift.
-Las tecnologias que usaremos seran.
+Repositorio con los ejercicios practicos para el workshop de Openshift
 
+Tecnologias que utilizaremos:
 - **Containers**
 - **Kubernetes**
 - **Openshift**
