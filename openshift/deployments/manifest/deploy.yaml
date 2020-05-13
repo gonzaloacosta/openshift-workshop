@@ -11,6 +11,8 @@ kind: Route
 metadata:
   name: blog
 spec:
+  tls:
+    termination: edge
   to:
     kind: Service
     name: blog

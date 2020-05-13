@@ -1,7 +1,9 @@
-# Dockerfiles
+# Dockerfile - ejercicios
+
+- Dockerfiles
 Directorio de trabajo ./build y dentro Dockerfile
 
-# Verificamos que el Dockerfile este dentro del directorio de trabajo
+Verificamos que el Dockerfile este dentro del directorio de trabajo
 ```
 cat build/Dockerfile
 FROM docker.io/library/fedora:latest
@@ -17,16 +19,20 @@ EXPOSE 5432
 CMD ["/bin/postgres", "-D", "/var/lib/pgsql/data", "-c", "config_file=/var/lib/pgsql/data/postgresql.conf"]
 ```
 
-# Realizamos el build de Dockerfile
+Realizamos el build de Dockerfile
+```
 buildah bud -t fedora_postgresql .
+```
 
-# Corremos el contenedor
+Corremos el contenedor
+```
 podman run -d --name fpg fedora_postgresql
-
-# Corremos comando dentro del contenedor
+```
+Corremos comando dentro del contenedor
+```
 podman exec -t fpg psgl
 ..
 \l
 \q
-
+```
 

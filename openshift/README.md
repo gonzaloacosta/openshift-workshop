@@ -1,25 +1,17 @@
-## Openshift Hands On
+## Openshift - Hands On
 
-El objetivo del repositorio es poder ejercitar el despliegue de aplicaciones en todas las modalidades de despliege haciendo uso la linea de comando.
+Ejercicios practicos para administrar recursos en un cluster de Openshift
 
-Despliegue de aplicaciones via:
+**Temas a tratar en este repositorio**
 
-- **oc new-app**: Detalle en directorio oc/
-- **Manifiestos YAML**: Detalle en directorio template/*.yaml
-- **Templates**: Detalle en directorio template/template.yaml
-
-En cada uno de los despliegues vamos a manejar los siguientes recursos de Openshift.
-
-- Pods
-- ImgesStreams (is)
-- DeploymentConfig (dc)
-- Services
-- Routes
-- ConfigMaps
-- Secrets
-- Templates
-- Builds
-- BuildConfig (bc).
-- Volumes (pvc y pv)
-- Liveness
-- Readiness
+1. Deployments
+1.1. [From Image](http://github.com/gonzaloacosta/openshift/oc/README.md)
+1.2. [From Source Code](http://github.com/gonzaloacosta/openshift/oc/README.md)
+1.3. [From Dockerfile](http://github.com/gonzaloacosta/openshift/oc/README.md)
+1.4. [From Manifest YAML](http://github.com/gonzaloacosta/openshift/monifest/README.md)
+1.5. [From Templates](http://github.com/gonzaloacosta/openshift/templates/README.md)
+2. Networking.
+3. Network Policies.
+4. Labels, Annotation y NodeSelectors.
+5. Monitoring
+6. Logging

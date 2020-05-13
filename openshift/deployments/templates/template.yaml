@@ -3,18 +3,17 @@ kind: Template
 labels:
   app: blog
   template: blog
-message: |-
-  Se creara el siguiente servicio al ejecutar este template $NAME
+message: Se creara el siguiente servicio al ejecutar este template $NAME
 metadata:
   annotations:
-    description: Template para deploy de aplicacion de ejemplo para Workshop de Openshift.
-    openshift.io/display-name: Aplicacion ejemplo para deploy sobre Openshift .
-    openshift.io/documentation-url: https://github.com/gonzaloacosta/workshop-openshift
-    openshift.io/long-description: Este template tiene la definicion de todos los recursos
-      necesarios para que el desarrollador necesite. Despliega un buildconfig, deploymentconfig
-      service, route, imagestreams.
+    description: Template para despliegue de aplicaciones Openshift Blog.
+    iconClass: icon-python
+    openshift.io/display-name: Blog Example (Ephemeral).
+    openshift.io/documentation-url: https://github.com/gonzaloacosta/workshop-openshift/
+    openshift.io/long-description: Este es un template ejemplo para mostrar el despliegue
+      de aplicaciones basadas en temples y lanzadas desde el catalogo de Openshift.
     openshift.io/provider-display-name: Semperti
-    openshift.io/support-url: devops@semperti.com
+    openshift.io/support-url: https://semperti.com
   labels:
     samples.operator.openshift.io/managed: "true"
   name: blog
@@ -48,9 +47,53 @@ objects:
     name: ${NAME}
   spec:
     host: ${APPLICATION_DOMAIN}
+    tls:
+      termination: edge
     to:
       kind: Service
       name: ${NAME}
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      description: Realiza un seguimiento de los cambios en la imagen de aplicacion
+    name: ${NAME}
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      description: Define como se construira la aplicacion.
+      template.alpha.openshift.io/wait-for-ready: "true"
+    name: ${NAME}
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${NAME}:latest
+    postCommit:
+      script: ./manage.py test
+    source:
+      contextDir: ${CONTEXT_DIR}
+      git:
+        ref: ${SOURCE_REPOSITORY_REF}
+        uri: ${SOURCE_REPOSITORY_URL}
+      type: Git
+    strategy:
+      sourceStrategy:
+        env:
+        - name: PIP_INDEX_URL
+          value: ${PIP_INDEX_URL}
+        from:
+          kind: ImageStreamTag
+          name: python:${PYTHON_VERSION}
+          namespace: ${NAMESPACE}
+      type: Source
+    triggers:
+    - type: ImageChange
+    - type: ConfigChange
+    - github:
+        secret: ${GITHUB_WEBHOOK_SECRET}
+      type: GitHub
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -112,21 +155,40 @@ objects:
       type: ImageChange
     - type: ConfigChange
 parameters:
+- description: La URL del repositorio de codigo.
+  displayName: Git Repository URL
+  name: SOURCE_REPOSITORY_URL
+  required: true
+  value: https://github.com/openshift-katacoda/blog-django-py
+- description: Indique el nombre de branch, tag u otra ref. Si no es utilizado se
+    usa el branch default.
+  displayName: Git Reference
+  name: SOURCE_REPOSITORY_REF
+- description: Indique el path relativo a su proyecto, si no es indicado se usa el
+    directorio raiz.
+  displayName: Context Directory
+  name: CONTEXT_DIR
+- description: Github trigger secret.
+  displayName: GitHub Webhook Secret
+  from: '[a-zA-Z0-9]{40}'
+  generate: expression
+  name: GITHUB_WEBHOOK_SECRET
 - description: Nombre de la aplicacion que vamos a desplegar.
   displayName: Name
   name: NAME
   required: true
   value: blog
- - description: Proyecto donde vamos a desplegar la aplicacion.
-  displayName: Namespace
+- description: Namespace donde recide la imagen python sobre la que se hara el build
+    en el BuildConfig.
+  displayName: Namespace Base Build
   name: NAMESPACE
   required: true
   value: openshift
-- description: Version of Python image to be used (3.6 or latest).
+- description: Version de la imagen de Python a ser usada (3.6 or latest).
   displayName: Version of Python Image
   name: PYTHON_VERSION
   required: true
-  value: "3.6"
+  value: latest
 - description: Limite maximo de memoria que puede consumir el deploy.
   displayName: Memory Limit
   name: MEMORY_LIMIT
@@ -138,8 +200,11 @@ parameters:
 - displayName: Database Username
   name: DATABASE_USER
   required: true
-  value: django
+  value: user
 - displayName: Database User Password
   from: '[a-zA-Z0-9]{16}'
   generate: expression
   name: DATABASE_PASSWORD
+- description: The custom PyPi index URL
+  displayName: Custom PyPi Index URL
+  name: PIP_INDEX_URL

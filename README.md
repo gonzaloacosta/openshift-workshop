@@ -1,8 +1,9 @@
 ## Openshift Workshop ##
 
-Repositorio con los ejercicios practicos para el workshop de Openshift
+Repositorio con ejercicios practicos para la administracion de aplicaciones basadas en contenedores.
 
-Tecnologias que utilizaremos:
-- **Containers**
-- **Kubernetes**
-- **Openshift**
+Tecnologias que seran usadas:
+- **[Containers](http://github.com/gonzaloacosta/containers/README.md)**
+- **[Kubernetes](http://github.com/gonzaloacosta/openshift/README.md)**
+- **[Openshift](http://github.com/gonzaloacosta/openshift/README.md)**
+
