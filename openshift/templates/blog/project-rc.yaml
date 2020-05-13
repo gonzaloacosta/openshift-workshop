@@ -1,0 +1,10 @@
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: Workshop Openshift
+  name: workshop
+  labels:
+    network-zones: rc
+    environment: homo

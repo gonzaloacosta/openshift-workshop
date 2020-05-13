@@ -1,0 +1,89 @@
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: Workshop Openshift
+  name: workshop
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: blog
+spec:
+  to:
+    kind: Service
+    name: blog
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+spec:
+  ports:
+  - name: web
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: blog
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: blog-database
+stringData:
+  database-password: password
+  database-user: admin
+---
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: blog
+spec:
+  replicas: 1
+  selector:
+    name: blog
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: blog
+      name: blog
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              key: database-user
+              name: blog-database
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-password
+              name: blog-database
+        image: openshiftkatacoda/blog-django-py
+        name: blog
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 2
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 2
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1

@@ -4,6 +4,7 @@ metadata:
   name: hello
   labels:
     role: hello
+  namespace: workshop
 spec:
   replicas: 2
   selector:
