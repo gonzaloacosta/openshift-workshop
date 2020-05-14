@@ -2,9 +2,6 @@
 
 Repositorio con ejercicios practicos para la administracion de aplicaciones basadas en contenedores.
 
-### **Evolucion tecnologica en la virtualizacion**
-![Evolucion Tenologica](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/evolucion.png)
-
 ### **[Containers](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
 *Tecnologia de software que permite empaquetar en un mismo componente de software una aplicacion con todas sus librerias y dependencias necesarias para que pueda ejecutarse de manera autonoma*
@@ -13,7 +10,7 @@ Repositorio con ejercicios practicos para la administracion de aplicaciones basa
 ![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/conteiners.png)
 
 **Ejercicios**
-Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
+- Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
 **Links de referencia**
 - [Cgrups](https://en.wikipedia.org/wiki/Cgroups)
@@ -30,7 +27,7 @@ Para acceder a las practicas hacer click en el **[link](https://github.com/gonza
 ![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/kubernetes-arq.png)
 
 **Ejercicios**
-Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/kubernetes)**
+- Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/kubernetes)**
 
 **Links de referencia**
 - [Container Orchestration](https://en.wikipedia.org/wiki/Container_orchestration)
@@ -43,7 +40,7 @@ Para acceder a las practicas hacer click en el **[link](https://github.com/gonza
 ![Openshift](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/openshift-cluster.png)
 
 **Ejercicios**
-Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift)**
+- Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift)**
 
 **Links de referencia**
 - [Openshift Docs](https://docs.openshift.com)
