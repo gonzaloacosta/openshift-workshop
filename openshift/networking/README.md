@@ -29,6 +29,7 @@ oc label namespace openshift-image-registry network-zone=local
 ```
 
 **Agregamos al ingress default el tag network-zone=rc**
+```
 oc edit --namespace=openshift-ingress-operator ingresscontroller/default
 ...
 spec
@@ -36,6 +37,7 @@ spec
     matchLabels:
       network-zone=local
 ...
+```
 
 Una vez que chequeamos que todo funciona correctamente con las rutas originales, las que ya estaban creadas, creamos el nuevo IngressController para la red DMZ.
 
