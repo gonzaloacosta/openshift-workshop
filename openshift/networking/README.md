@@ -52,7 +52,7 @@ metadata:
   namespace: openshift-ingress-operator
 spec:
   domain: apps.ocp.dmz.dominio.com
-    namespaceSelector:
+  namespaceSelector:
     matchLabels:
       network-zone: dmz
   nodePlacement:
