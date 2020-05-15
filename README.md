@@ -3,19 +3,18 @@
 > Repositorio con ejercicios practicos para la administracion de aplicaciones basadas en contenedores.
 
 ## Contenido
-* [Containers](#Containers)
+* [**Containers**](#Containers)
   * [Arquitectura](#Arquitectura)
   * [Ejercicios](#Ejercicios)
   * [Documentacion](#Documentacion)
-* [Kubernetes](#Kubernetes)
+* [**Kubernetes**](#Kubernetes)
   * [Arquitectura](#Arquitectura)
   * [Ejercicios](#Ejercicios)
   * [Documentacion](#Documentacion)
-* [Openshift](#Openshift)
+* [**Openshift**](#Openshift)
   * [Arquitectura](#Arquitectura)
   * [Ejercicios](#Ejercicios)
   * [Documentacion](#Documentacion)
-
 
 ### **[Containers](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
@@ -23,6 +22,7 @@
 
 **Arquitectura**
 [Completar con Imagen]
+
 **Ejercicios**
 - Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
