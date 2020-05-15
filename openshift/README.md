@@ -10,8 +10,8 @@ Ejercicios practicos para administrar recursos en un cluster de Openshift
     - [From Dockerfile](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/deployments/oc). 
     - [From Manifest YAML](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/deployments/manifest). 
     - [From Templates](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/deployments/templates). 
-2. Networking.
-3. Network Policies.
-4. Labels, Annotation y NodeSelectors.
+    - [Management Pods:](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/deployments/management)
+2. [Networking](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/networking).
+3. [Security](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/security).
 5. [Monitoring](https://github.com/gonzaloacosta/openshift-workshop/tree/master/openshift/monitoring).
 6. Logging.

@@ -10,8 +10,8 @@ De esta manera vamos a poder desplegar ingress controller (nuevos pod router) de
 
 Vamos a tener dos ingress controller
 
-* **default** > atiende los namespaces con label ```network-zone=local```
-* **dmz** > atiende los namespaces con label ```network-zone=dmz```
+* **default** > atiende los namespaces con label ```network-zone=local``` > wildcard: ocp.dmz.dominio.com
+* **dmz** > atiende los namespaces con label ```network-zone=dmz``` > wildcard default: apps.ocp.dominio.com
 
 NOTA: los pod router pueden filtraf tanto por nombre de namespaces como por labels colocadas en rutas, para mas detalle consultar la ayuda en la declaracion del Operador Ingress Controller.
 
@@ -35,7 +35,7 @@ oc edit --namespace=openshift-ingress-operator ingresscontroller/default
 spec
   namespaceSelector:
     matchLabels:
-      network-zone=local
+      network-zone: local
 ...
 ```
 
@@ -46,14 +46,14 @@ Una vez que chequeamos que todo funciona correctamente con las rutas originales,
 Crear la definicion del nuevo ingress controller, como se puede ver tenemos el ```matchLabel: network-zone: dmz``` y el ```nodeSelector: matchLabel: node-role.kubernetes.io/infra: dmz``` de manera que se posicione el pod router sobre el nodo de infraestructura etiquetado como infra: dmz.
 
 ```
-cat << EOF > router-network-zone-rs.yaml
+cat << EOF > router-network-zone-dmz.yaml
 apiVersion: operator.openshift.io/v1
 kind: IngressController
 metadata:
-  name: network-zone-rs
+  name: network-zone-dmz
   namespace: openshift-ingress-operator
 spec:
-  domain: apps.ocp.dmz.dominio.com
+  domain: apps.dmz.dominio.com
   namespaceSelector:
     matchLabels:
       network-zone: dmz
@@ -99,15 +99,10 @@ oc set env dc/blog BLOG_BANNER_COLOR=green -n myapps-back-prod
 
 Para poder exponer una aplicacion en la red de dmz lo realizamos de la siguiente manera, se puede ver que indicamos el servicio y la url que queremos exponer.
 ```
-oc create route edge blog --service=blog --hostname=blog.apps.ocp.dmz.dominio.com -n myapps-front-prod
+oc create route edge blog --service=blog --hostname=blog.apps.dmz.dominio.com -n myapps-front-prod
 ```
 
 Para el caso de la red de back, sin especificar el parametro --hostname la ruta se genera dinamicamente en base al wildcard por defecto. 
 ```
 oc create route edge blog --service=blog -n myapps-front-prod
 ```
-
-
-
-
-
