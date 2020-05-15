@@ -1,14 +1,28 @@
 ## Openshift Workshop ##
 
-Repositorio con ejercicios practicos para la administracion de aplicaciones basadas en contenedores.
+> Repositorio con ejercicios practicos para la administracion de aplicaciones basadas en contenedores.
+
+## Contenido
+* [Containers](#Containers)
+  * [Arquitectura](#Arquitectura)
+  * [Ejercicios](#Ejercicios)
+  * [Documentacion](#Documentacion)
+* [Kubernetes](#Kubernetes)
+  * [Arquitectura](#Arquitectura)
+  * [Ejercicios](#Ejercicios)
+  * [Documentacion](#Documentacion)
+* [Openshift](#Openshift)
+  * [Arquitectura](#Arquitectura)
+  * [Ejercicios](#Ejercicios)
+  * [Documentacion](#Documentacion)
+
 
 ### **[Containers](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
 *Tecnologia de software que permite empaquetar en un mismo componente de software una aplicacion con todas sus librerias y dependencias necesarias para que pueda ejecutarse de manera autonoma*
 
 **Arquitectura**
-![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/conteiners.png)
-
+[Completar con Imagen]
 **Ejercicios**
 - Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/containers)**
 
@@ -24,7 +38,7 @@ Repositorio con ejercicios practicos para la administracion de aplicaciones basa
 
 *Es un sistema opens-source para automazar el despliegue (deploy), escalado (scale) y adminsitracion (management) de aplicaciones basadas en contenedores.*
 
-![Containers](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/kubernetes-arq.png)
+![Kubernetes](https://raw.githubusercontent.com/gonzaloacosta/openshift-workshop/master/images/kubernetes-arq.png)
 
 **Ejercicios**
 - Para acceder a las practicas hacer click en el **[link](https://github.com/gonzaloacosta/openshift-workshop/tree/master/kubernetes)**
