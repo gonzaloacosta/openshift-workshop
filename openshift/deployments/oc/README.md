@@ -66,19 +66,19 @@ oc expose svc/blog-from-image
 
 - Despliegue desde codigo fuente
 ```
-oc new-app python:latest~https://github.com/openshift-katacoda/blog-django-py --name blog-from-source-py
+oc new-app python:latest~https://github.com/gonzaloacosta/blog-django-py --name blog-from-source-py
 oc expose svc/blog-from-source-py
 ```
 
 - Despliegue desde codigo fuente cuando hay un dockerfile en repositorio
 ```
-oc new-app --strategy=source https://github.com/openshift-katacoda/blog-django-py --name blog-from-source-auto
+oc new-app --strategy=source https://github.com/gonzaloacosta/blog-django-py --name blog-from-source-auto
 oc expose svc/blog-from-source-auto
 ```
 
 - Desplieuge desde dockerfile
 ```
-oc new-app https://github.com/openshift-katacoda/blog-django-py --name blog-from-docker
+oc new-app https://github.com/gonzaloacosta/blog-django-py --name blog-from-docker
 oc expose svc/blog-from-docker
 ```
 

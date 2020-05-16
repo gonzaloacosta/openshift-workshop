@@ -1,4 +1,4 @@
-#### Configuracion de una CA Trusted
+#### Service Mesh - Configuracion de una Custom CA Trusted
 
 La configuracion se debe hacer en base a un bug detectado por Red Hat donde el operador del control plance no despliega la CA Custom dada de alta en el proyecto openshift-config recurso proxy ```oc get proxy -n openshift-config```
 
