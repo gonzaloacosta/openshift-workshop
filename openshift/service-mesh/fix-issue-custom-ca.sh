@@ -23,4 +23,9 @@ echo ""
 echo "Scale down two of the operators which will delete the previus changes"
 oc scale --replicas 0 -n openshift-operators deployment/istio-operator
 oc scale --replicas 0 -n openshift-operators deployment/jaeger-operator
+echo ""
 
+sleep 10
+echo "Check deploy new pods for Prometheus, Grafana and Jaeger"
+oc get pods -o wide -n istio-system
+echo ""
