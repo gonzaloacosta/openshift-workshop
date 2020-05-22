@@ -20,10 +20,11 @@ echo "Edit Jaeger deployment to mount ConfigMaps"
 oc patch deployment/jaeger -n istio-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"oauth-proxy","volumeMounts":[{"mountPath":"/etc/pki/ca-trust/extracted/pem/","name":"trusted-ca-bundle","readOnly":true}]},{"name":"jaeger","volumeMounts":[{"mountPath":"/etc/pki/ca-trust/extracted/pem/","name":"trusted-ca-bundle","readOnly":true}]}],"volumes":[{"configMap":{"defaultMode":420,"items":[{"key":"ca-bundle.crt","path":"tls-ca-bundle.pem"}],"name":"trusted-ca-bundle","optional":true},"name":"trusted-ca-bundle"}]}}}}'
 echo ""
 
-echo "Scale down two of the operators which will delete the previus changes"
-oc scale --replicas 0 -n openshift-operators deployment/istio-operator
-oc scale --replicas 0 -n openshift-operators deployment/jaeger-operator
-echo ""
+# El scale --replica 0 recrea los pods pisando la configuracion aplicada con el patch
+#echo "Scale down two of the operators which will delete the previus changes"
+#oc scale --replicas 0 -n openshift-operators deployment/istio-operator
+#oc scale --replicas 0 -n openshift-operators deployment/jaeger-operator
+#echo ""
 
 sleep 10
 echo "Check deploy new pods for Prometheus, Grafana and Jaeger"
